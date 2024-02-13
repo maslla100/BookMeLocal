@@ -13,7 +13,7 @@ A website that allows users to book appointments with local businesses. The busi
   - Personalize your profile with notification alerts, color schemes, time zones, link outside calendars, etc.
 - Future addition to add a finance section that tracks how much you spent, companies can add invoices for your records, potentially tax forms, etc.
 
-# To Do
+# To Do List
 - Create 3 ficticious companies; 1 car mechanic, 1 barbershop, 1 landscape company
 - Login Page
   - User Profile
@@ -28,3 +28,5 @@ A website that allows users to book appointments with local businesses. The busi
     - A drop down of the services that the company provides
     - Once a servies is selected, the amount of time needed to perform the task is presented and the calendar booking is created for that amount of time.
     - A text box that allows you to add notes to your booking
+- When the booking is completed then it is added to the companies main calendar
+### The above information in the To Do List is the minimum to turn in for Project 2
