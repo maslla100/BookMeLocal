@@ -1,14 +1,18 @@
-// config/config.js
-
+const Sequelize = require('sequelize');
 require('dotenv').config();
 
-module.exports = {
-    development: {
-        username: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.DB_NAME,
-        host: process.env.DB_HOST,
+const sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASS,
+    {
+        host: process.env.DB_HOST,    // 'localhost'
         dialect: 'mysql',
-    },
-    // Add production configuration as needed
-};
+        port: 3306,
+        dialectOptions: {
+            // Include SSL configuration here if needed for production
+        }
+    }
+);
+
+module.exports = sequelize;
