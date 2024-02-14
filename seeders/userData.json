@@ -14,5 +14,17 @@
     {
         "email": "caleb@example.com",
         "password": "calebPassword"
+    },
+    {
+        "email": "owner@shearelegancebarbershop.com",
+        "password": "ownerPassword"
+    },
+    {
+        "email": "owner@precisionautocare.com",
+        "password": "ownerPassword"
+    },
+    {
+        "email": "owner@tranquilterrascapes.com",
+        "password": "ownerPassword"
     }
 ]
