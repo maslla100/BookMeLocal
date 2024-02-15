@@ -1,0 +1,28 @@
+{{!-- views/dashboard.handlebars --}}
+{{> header}}
+
+<h1>Your Bookings</h1>
+
+{{#if bookings.length}}
+<ul>
+    {{#each bookings}}
+    <li>
+        <strong>Service:</strong> {{Service.name}} <br>
+        <strong>Business:</strong> {{Service.Business.name}} <br>
+        <strong>Date:</strong> {{formatDate booking_time}} <br>
+        <strong>Duration:</strong> {{duration}} minutes
+        <!-- Edit and Cancel Buttons -->
+        <a href="/bookings/{{this.id}}/edit" class="btn btn-primary">Edit</a>
+        <form action="/bookings/{{this.id}}" method="POST" style="display: inline;">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-danger">Cancel</button>
+        </form>
+    </li>
+    {{/each}}
+
+</ul>
+{{else}}
+<p>You have no bookings.</p>
+{{/if}}
+
+{{> footer}}

@@ -1,0 +1,14 @@
+{{> header}}
+
+<h1>All Businesses</h1>
+<ul>
+    {{#each businesses}}
+    <li>
+        <h2><a href="/businesses/{{this.id}}">{{this.name}}</a></h2>
+        <p>{{this.description}}</p>
+        <p>Operating Hours: {{this.hours}}</p>
+    </li>
+    {{/each}}
+</ul>
+
+{{> footer}}

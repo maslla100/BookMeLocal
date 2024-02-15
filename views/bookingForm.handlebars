@@ -1,0 +1,19 @@
+<form action="/bookings" method="post">
+    <div class="form-group">
+        <label for="service">Service:</label>
+        <select name="service_id" id="service" required>
+            {{#each services}}
+            <option value="{{this.id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="bookingTime">Booking Time:</label>
+        <input type="datetime-local" id="bookingTime" name="booking_time" required>
+    </div>
+    <div class="form-group">
+        <label for="duration">Duration (minutes):</label>
+        <input type="number" id="duration" name="duration" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Book Now</button>
+</form>

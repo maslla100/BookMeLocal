@@ -1,0 +1,32 @@
+{{!-- views/businesses/edit.handlebars --}}
+{{> header}}
+
+<h1>Edit Business</h1>
+
+{{#if errors}}
+<ul>
+    {{#each errors}}
+    <li>{{this.msg}}</li>
+    {{/each}}
+</ul>
+{{/if}}
+
+<form action="/businesses/{{business.id}}?_method=PUT" method="POST">
+    <div>
+        <label for="name">Business Name:</label>
+        <input type="text" id="name" name="name" value="{{business.name}}" required>
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required>{{business.description}}</textarea>
+    </div>
+    <div>
+        <label for="hours">Operating Hours:</label>
+        <input type="text" id="hours" name="hours" value="{{business.hours}}">
+    </div>
+    <button type="submit" class="btn btn-primary">Update Business</button>
+</form>
+
+<a href="/businesses/{{business.id}}" class="btn btn-secondary">Cancel</a>
+
+{{> footer}}

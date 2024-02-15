@@ -1,0 +1,2 @@
+heroku config:set SESSION_SECRET=YOUR_SESSION_SECRET
+heroku config:set NODE_ENV=production
