@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { ensureAuthenticated } = require('../middleware/authMiddleware');
+const { checkAuthenticated } = require('../middleware/authMiddleware');
 const { Booking, Service, Business } = require('../models');
 
 // Dashboard Route
-router.get('/', ensureAuthenticated, async (req, res) => {
+router.get('/', checkAuthenticated, async (req, res) => {
     try {
 
         const userId = req.session.userId;

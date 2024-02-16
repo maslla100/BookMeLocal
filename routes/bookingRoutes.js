@@ -87,7 +87,7 @@ router.delete('/:bookingId', checkAuthenticated, async (req, res) => {
 });
 
 // GET route for editing a booking form
-router.get('/:bookingId/edit', ensureAuthenticated, async (req, res) => {
+router.get('/:bookingId/edit', checkAuthenticated, async (req, res) => {
     try {
         const booking = await Booking.findByPk(req.params.bookingId, {
             include: [Service]
@@ -106,7 +106,7 @@ router.get('/:bookingId/edit', ensureAuthenticated, async (req, res) => {
 });
 
 // DELETE route for canceling a booking
-router.delete('/:bookingId', ensureAuthenticated, async (req, res) => {
+router.delete('/:bookingId', checkAuthenticated, async (req, res) => {
     try {
         await Booking.destroy({
             where: { id: req.params.bookingId }

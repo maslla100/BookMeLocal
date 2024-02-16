@@ -4,7 +4,7 @@
 <p>{{business.description}}</p>
 <p>Operating Hours: {{business.hours}}</p>
 
-{{!-- Conditional rendering for Edit and Delete options --}}
+
 {{#if userIsAuthorized}}
 <div>
     <a href="/businesses/{{business.id}}/edit" class="btn btn-primary">Edit Business</a>
