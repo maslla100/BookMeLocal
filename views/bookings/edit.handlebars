@@ -1,37 +1,44 @@
 {{> header}}
 
-<h1>Edit Booking</h1>
+<div class="container">
+    <h1 class="heading">Edit Booking</h1>
 
-{{#if errors}}
-<ul>
-    {{#each errors}}
-    <li>{{this.message}}</li>
-    {{/each}}
-</ul>
-{{/if}}
-
-<form action="/bookings/{{booking.id}}?_method=PUT" method="POST">
-    <div class="form-group">
-        <label for="service_id">Service:</label>
-        <select id="service_id" name="service_id" required>
-            {{#each services}}
-            <option value="{{this.id}}" {{#ifEquals ../booking.service_id this.id}}selected{{/ifEquals}}>{{this.name}}
-            </option>
+    {{#if errors}}
+    <div class="alert alert-danger">
+        <strong>Errors:</strong>
+        <ul>
+            {{#each errors}}
+            <li>{{this.message}}</li>
             {{/each}}
-        </select>
+        </ul>
     </div>
-    <div class="form-group">
-        <label for="booking_time">Booking Time:</label>
-        <input type="datetime-local" id="booking_time" name="booking_time"
-            value="{{formatDateTime booking.booking_time}}" required>
-    </div>
-    <div class="form-group">
-        <label for="duration">Duration (minutes):</label>
-        <input type="number" id="duration" name="duration" value="{{booking.duration}}" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Update Booking</button>
-</form>
+    {{/if}}
 
-<a href="/dashboard" class="btn btn-secondary">Cancel</a>
+
+    <form action="/bookings/{{booking.id}}?_method=PUT" method="POST" class="form">
+        <div class="form-group">
+            <label for="service_id">Service:</label>
+            <select id="service_id" name="service_id" required class="form-control">
+                {{#each services}}
+                <option value="{{this.id}}" {{#ifEquals ../booking.service_id this.id}}selected{{/ifEquals}}>
+                    {{this.name}}
+                </option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="booking_time">Booking Time:</label>
+            <input type="datetime-local" id="booking_time" name="booking_time"
+                value="{{formatDateTime booking.booking_time}}" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration (minutes):</label>
+            <input type="number" id="duration" name="duration" value="{{booking.duration}}" required
+                class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Update Booking</button>
+        <a href="/dashboard" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
 
 {{> footer}}

@@ -1,6 +1,14 @@
-<h1>Businesses</h1>
-<ul>
-    {{#each businesses}}
-    <li><a href="/businesses/{{this.id}}">{{this.name}}</a></li>
-    {{/each}}
-</ul>
+{{> header}}
+
+<div class="container">
+    <h2 class="heading">Businesses</h2>
+    <ul class="business-list">
+        {{#each businesses}}
+        <li class="business-item">
+            <a href="/businesses/{{this.id}}" class="business-link">{{this.name}}</a>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+
+{{> footer}}

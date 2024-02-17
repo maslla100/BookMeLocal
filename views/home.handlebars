@@ -1,2 +1,21 @@
-<h1>Welcome to BookMeLocal</h1>
-<p>This is the homepage.</p>
+{{> header }}
+
+<div class="container">
+    <h1 class="heading">Welcome to BookMeLocal</h1>
+    <p>This is the homepage. BookMeLocal is your one-stop solution for finding and booking local services.</p>
+
+
+    <section>
+        <h2 class="heading">Our Services</h2>
+        <p>Explore a wide range of services offered by local businesses.</p>
+        <a href="/services" class="btn btn-primary">View Services</a>
+    </section>
+
+    <section>
+        <h2 class="heading">For Businesses</h2>
+        <p>Are you a local business? Join our platform to reach more customers.</p>
+        <a href="/businesses/new" class="btn btn-secondary">Register Your Business</a>
+    </section>
+</div>
+
+{{> footer }}

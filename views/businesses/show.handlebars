@@ -1,24 +1,21 @@
-<!--{{> header}}
+{{> header}}
 
-<h1>{{business.name}}</h1>
-<p>{{business.description}}</p>
-<p>Operating Hours: {{business.hours}}</p>
+<div class="container">
+    <h2 class="heading">{{business.name}}</h2>
+    <div class="business-details">
+        <p>{{business.description}}</p>
+        <p><strong>Operating Hours:</strong> {{business.hours}}</p>
+    </div>
 
-
-{{#if userIsAuthorized}}
-<div>
-    <a href="/businesses/{{business.id}}/edit" class="btn btn-primary">Edit Business</a>
-    <form action="/businesses/{{business.id}}?_method=DELETE" method="POST"
-        onsubmit="return confirm('Are you sure you want to delete this business?');">
-        <button type="submit" class="btn btn-danger">Delete Business</button>
-    </form>
+    {{#if userIsAuthorized}}
+    <div class="business-actions">
+        <a href="/businesses/{{business.id}}/edit" class="btn btn-primary">Edit Business</a>
+        <form action="/businesses/{{business.id}}?_method=DELETE" method="POST"
+            onsubmit="return confirm('Are you sure you want to delete this business?');" class="inline-form">
+            <button type="submit" class="btn btn-danger">Delete Business</button>
+        </form>
+    </div>
+    {{/if}}
 </div>
-{{/if}}
 
-
-
-{{> footer}} -->
-
-<h1>{{business.name}}</h1>
-<p>{{business.description}}</p>
-<!-- Display other business details here -->
+{{> footer}}

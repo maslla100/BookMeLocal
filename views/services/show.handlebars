@@ -1,4 +1,12 @@
-<h1>{{service.name}}</h1>
-<p>{{service.description}}</p>
-<p>Price: ${{service.price}}</p>
-<a href="/services">Back to Services List</a>
+{{> header }}
+
+<div class="container">
+    <h2 class="heading">{{service.name}}</h2>
+    <p>{{service.description}}</p>
+    <p class="price">Price: <strong>${{service.price}}</strong></p>
+
+    <!-- Use a button-like style for the back link -->
+    <a href="/services" class="btn btn-secondary">Back to Services List</a>
+</div>
+
+{{> footer }}

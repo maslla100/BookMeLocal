@@ -1,27 +1,31 @@
-{{> header}}
+{{> header }}
 
-<h1>Your Bookings</h1>
+<div class="container">
+    <h1 class="heading">Your Bookings</h1>
 
-{{#if bookings.length}}
-<ul>
-    {{#each bookings}}
-    <li>
-        <strong>Service:</strong> {{Service.name}} <br>
-        <strong>Business:</strong> {{Service.Business.name}} <br>
-        <strong>Date:</strong> {{formatDate booking_time}} <br>
-        <strong>Duration:</strong> {{duration}} minutes
-        <!-- Edit and Cancel Buttons -->
-        <a href="/bookings/{{this.id}}/edit" class="btn btn-primary">Edit</a>
-        <form action="/bookings/{{this.id}}" method="POST" style="display: inline;">
-            <input type="hidden" name="_method" value="DELETE">
-            <button type="submit" class="btn btn-danger">Cancel</button>
-        </form>
-    </li>
-    {{/each}}
+    {{#if bookings.length}}
+    <div class="booking-list">
+        {{#each bookings}}
+        <div class="booking-item">
+            <h2>{{Service.name}}</h2>
+            <p><strong>Business:</strong> {{Service.Business.name}}</p>
+            <p><strong>Date:</strong> {{formatDate booking_time}}</p>
+            <p><strong>Duration:</strong> {{duration}} minutes</p>
+            <!-- Edit and Cancel Buttons -->
+            <div class="booking-actions">
+                <a href="/bookings/{{this.id}}/edit" class="btn btn-primary">Edit</a>
+                <form action="/bookings/{{this.id}}" method="POST" class="form-inline">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">Cancel</button>
+                </form>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{else}}
+    <p>You have no bookings.</p>
+    {{/if}}
 
-</ul>
-{{else}}
-<p>You have no bookings.</p>
-{{/if}}
+</div>
 
-{{> footer}}
+{{> footer }}

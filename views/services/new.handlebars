@@ -1,24 +1,36 @@
-<h1>Add New Service</h1>
-{{#if errors}}
-<ul class="errors">
-    {{#each errors}}
-    <li>{{this.message}}</li>
-    {{/each}}
-</ul>
-{{/if}}
-<form action="/services" method="POST">
-    <div class="form-group">
-        <label for="name">Service Name:</label>
-        <input type="text" id="name" name="name" required>
+{{> header}}
+
+<div class="container">
+    <h1 class="heading">Add New Service</h1>
+
+    {{#if errors}}
+    <div class="alert alert-danger">
+        {{#each errors}}
+        <p>{{this.message}}</p>
+        {{/each}}
     </div>
-    <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea id="description" name="description"></textarea>
-    </div>
-    <div class="form-group">
-        <label for="price">Price:</label>
-        <input type="text" id="price" name="price" required>
-    </div>
-    <button type="submit">Add Service</button>
-</form>
-<a href="/services">Back to Services List</a>
+    {{/if}}
+
+    <form action="/services" method="POST" class="form">
+        <div class="form-group">
+            <label for="name">Service Name:</label>
+            <input type="text" id="name" name="name" required class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" required class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Service</button>
+    </form>
+
+    <a href="/services" class="btn btn-secondary">Back to Services List</a>
+</div>
+
+{{> footer}}

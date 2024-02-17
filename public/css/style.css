@@ -66,3 +66,76 @@
 .business-hours {
     margin-bottom: 20px;
 }
+
+.business-list {
+    list-style: none;
+    padding: 0;
+}
+
+.business-item {
+    margin-bottom: 10px;
+}
+
+.business-link {
+    display: block;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #007bff;
+    transition: background-color 0.2s;
+}
+
+.business-link:hover {
+    background-color: #eef4ff;
+}
+
+.price {
+    font-size: 1.25rem;
+    margin: 1rem 0;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.booking-list {
+    list-style: none;
+    padding: 0;
+}
+
+.booking-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.booking-actions {
+    margin-top: 10px;
+}
