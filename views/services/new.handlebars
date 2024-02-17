@@ -1,0 +1,24 @@
+<h1>Add New Service</h1>
+{{#if errors}}
+<ul class="errors">
+    {{#each errors}}
+    <li>{{this.message}}</li>
+    {{/each}}
+</ul>
+{{/if}}
+<form action="/services" method="POST">
+    <div class="form-group">
+        <label for="name">Service Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" required>
+    </div>
+    <button type="submit">Add Service</button>
+</form>
+<a href="/services">Back to Services List</a>

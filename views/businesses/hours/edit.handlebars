@@ -1,5 +1,3 @@
-{{> header}}
-
 <div class="container">
     <h2 class="heading">Edit Business</h2>
 
@@ -13,24 +11,21 @@
 
     <form action="/businesses/{{business.id}}?_method=PUT" method="POST" class="form">
         <div class="form-group">
-            <label for="name">Business Name:</label>
+            <label for="name">Business Name</label>
             <input type="text" id="name" name="name" value="{{business.name}}" required class="form-control">
         </div>
 
         <div class="form-group">
-            <label for="description">Description:</label>
+            <label for="description">Description</label>
             <textarea id="description" name="description" required
                 class="form-control">{{business.description}}</textarea>
         </div>
 
         <div class="form-group">
-            <label for="hours">Operating Hours:</label>
+            <label for="hours">Business Hours</label>
             <input type="text" id="hours" name="hours" value="{{business.hours}}" class="form-control">
         </div>
 
         <button type="submit" class="btn btn-primary">Update Business</button>
-        <a href="/businesses/{{business.id}}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
-
-{{> footer}}

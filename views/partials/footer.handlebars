@@ -1,6 +1,40 @@
-<footer>
-    <p>&copy; 2024 Book Me Local. All Rights Reserved.</p>
+<footer class="footer">
+    <div class="container">
+        <p>&copy; {{year}} BookMeLocal. All rights reserved.</p>
+        <p>
+            <a href="/">Home</a> |
+            <a href="/about">About Us</a> |
+            <a href="/contact">Contact</a>
+        </p>
+        <p>Follow us on
+            <a href="https://twitter.com" target="_blank">Twitter</a>,
+            <a href="https://facebook.com" target="_blank">Facebook</a>, and
+            <a href="https://instagram.com" target="_blank">Instagram</a>.
+        </p>
+    </div>
 </footer>
-</body>
 
-</html>
+<style>
+    .footer {
+        background-color: #f8f9fa;
+        padding: 20px 0;
+        text-align: center;
+        margin-top: 40px;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .footer p {
+        margin: 0;
+        font-size: 14px;
+        color: #6c757d;
+    }
+
+    .footer a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+</style>

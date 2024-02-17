@@ -9,19 +9,22 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/views/businesses">Businesses</a></li>
-                <li><a href="/views/services">Services</a></li>
-                {{#if loggedIn}}
-                <li><a href="/views/dashboard">Dashboard</a></li>
-                <li><a href="/views/logout">Logout</a></li>
-                {{else}}
-                <li><a href="/views/login">Login</a></li>
-                <li><a href="/views/register">Register</a></li>
-                {{/if}}
-            </ul>
-        </nav>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="logo"><a href="/">BookMeLocal</a></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/businesses">Businesses</a></li>
+                    <li><a href="/services">Services</a></li>
+                    {{#if loggedIn}}
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                    {{else}}
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                    {{/if}}
+                </ul>
+            </nav>
+        </div>
     </header>

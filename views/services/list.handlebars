@@ -1,0 +1,12 @@
+<h1>Services List</h1>
+{{#each services as |service|}}
+<div class="service">
+    <h2>{{service.name}}</h2>
+    <p>{{service.description}}</p>
+    <p>Price: ${{service.price}}</p>
+    <a href="/services/{{service.id}}">View Details</a>
+</div>
+{{else}}
+<p>No services found.</p>
+{{/each}}
+<a href="/services/new">Add New Service</a>

@@ -9,6 +9,8 @@ const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const moment = require('moment');
 const { sequelize } = require('./models');
+//const path = require('path'); //new**new**
+
 
 // Load environment variables
 dotenv.config();
@@ -30,6 +32,10 @@ app.use('/api/', apiLimiter);
 
 // Setup Handlebars with custom helpers
 const hbs = exphbs.create({
+    //defaultLayout: 'main', // Default layout name, ensure this matches your layout file name  **new**
+    //layoutsDir: path.join(__dirname, 'views/layouts'), // Directory for layout files  **new**
+    //partialsDir: path.join(__dirname, 'views/partials'), // Directory for partial files  **new**
+
     helpers: {
         formatDate: function (date, format) {
             return moment(date).format(format);
