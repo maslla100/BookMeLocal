@@ -1,0 +1,31 @@
+<div class="container">
+    <h1 class="heading">Owner Dashboard</h1>
+
+    <section class="dashboard-section">
+        <h2 class="subheading">Welcome, {{user.name}}</h2>
+        <p>Manage your business, services, and bookings effectively from your Dashboard.</p>
+
+        <div class="dashboard-actions">
+            <a href="/businesses/{{user.businessId}}" class="btn btn-primary">View My Business</a>
+            <a href="/services/new" class="btn btn-secondary">Add New Service</a>
+            <a href="/bookings" class="btn btn-primary">Manage Bookings</a>
+        </div>
+    </section>
+
+    <section class="dashboard-section">
+        <h2 class="subheading">Recent Bookings</h2>
+        {{#if bookings.length}}
+        <ul class="booking-list">
+            {{#each bookings}}
+            <li class="booking-item">
+                <h3>{{this.serviceName}}</h3>
+                <p>Date: {{this.date}} | Time: {{this.time}}</p>
+                <a href="/bookings/{{this.id}}/edit" class="btn btn-secondary">Edit Booking</a>
+            </li>
+            {{/each}}
+        </ul>
+        {{else}}
+        <p>No recent bookings found.</p>
+        {{/if}}
+    </section>
+</div>

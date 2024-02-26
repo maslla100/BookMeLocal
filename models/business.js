@@ -1,50 +1,47 @@
-'use strict';
 const { Model, DataTypes } = require('sequelize');
 
+
 module.exports = (sequelize) => {
-    class Business extends Model {
-        static associate(models) {
-            // Associate a business with its owner
-            Business.belongsTo(models.User, { foreignKey: 'owner_id' });
-            // Associate a business with its services
-            Business.hasMany(models.Service, { foreignKey: 'business_id' });
-        }
-    }
+    class Business extends Model { }
+
     Business.init({
+        // Define attributes specific to businesses
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true, // Ensures name is not empty
-            },
+            allowNull: false
         },
         description: {
             type: DataTypes.TEXT,
-            allowNull: false,
-            validate: {
-                notEmpty: true, // Ensures description is not empty
-            },
-        },
-        hours: {
-            type: DataTypes.STRING,
-            allowNull: true, // Assuming hours can be nullable
-            validate: {
-                // Optional: Add validation for hours format if there's a specific format you follow
-            },
+            allowNull: false
         },
         owner_id: {
             type: DataTypes.INTEGER,
-            allowNull: true, // Allows null on delete
+            allowNull: false,
             references: {
-                model: 'Users', // Specifies the model this foreignKey references
-                key: 'id',
-            },
+                model: 'user',
+                key: 'id'
+            }
         },
+        hours: {
+            type: DataTypes.STRING,
+            allowNull: true
+        }
     }, {
         sequelize,
         modelName: 'Business',
         timestamps: true,
-        paranoid: true, // Consider enabling soft deletes if applicable
+        paranoid: true, // Enable soft deletes
+        tableName: 'Businesses',  // Explicitly specifying the table name
+
     });
+
     return Business;
 };
+
+// Exporting the Booking model
+//module.exports = Business;

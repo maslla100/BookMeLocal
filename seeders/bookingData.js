@@ -1,6 +1,7 @@
 module.exports = [
     // Precision AutoCare Solutions Bookings
     {
+        businessName: 'Precision AutoCare Solutions',
         serviceName: 'Oil Change',
         userEmail: 'luis@example.com',
         bookingDetails: {
@@ -9,6 +10,7 @@ module.exports = [
         }
     },
     {
+        businessName: 'Precision AutoCare Solutions',
         serviceName: 'Tire Rotation',
         userEmail: 'alex@example.com',
         bookingDetails: {
@@ -17,6 +19,7 @@ module.exports = [
         }
     },
     {
+        businessName: 'Precision AutoCare Solutions',
         serviceName: 'Flat Tire Repair',
         userEmail: 'edgar@example.com',
         bookingDetails: {
@@ -26,6 +29,7 @@ module.exports = [
     },
     // Shear Elegance Barbershop Bookings
     {
+        businessName: 'Shear Elegance Barbershop',
         serviceName: 'Hair Cut',
         userEmail: 'caleb@example.com',
         bookingDetails: {
@@ -34,6 +38,7 @@ module.exports = [
         }
     },
     {
+        businessName: 'Shear Elegance Barbershop',
         serviceName: 'Head Massage',
         userEmail: 'luis@example.com',
         bookingDetails: {
@@ -42,6 +47,7 @@ module.exports = [
         }
     },
     {
+        businessName: 'Shear Elegance Barbershop',
         serviceName: 'Beard Trimming',
         userEmail: 'alex@example.com',
         bookingDetails: {
@@ -51,6 +57,7 @@ module.exports = [
     },
     // Tranquil TerraScapes Bookings
     {
+        businessName: 'Tranquil TerraScapes',
         serviceName: 'Lawn Cutting',
         userEmail: 'edgar@example.com',
         bookingDetails: {
@@ -59,6 +66,7 @@ module.exports = [
         }
     },
     {
+        businessName: 'Tranquil TerraScapes',
         serviceName: 'Tree Trimming',
         userEmail: 'caleb@example.com',
         bookingDetails: {
@@ -67,6 +75,7 @@ module.exports = [
         }
     },
     {
+        businessName: 'Tranquil TerraScapes',
         serviceName: 'Leaf Removal',
         userEmail: 'luis@example.com',
         bookingDetails: {

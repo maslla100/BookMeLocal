@@ -1,124 +1,53 @@
 const express = require('express');
 const router = express.Router();
-const { Booking, Service } = require('../models');
-const { checkAuthenticated } = require('../middleware/authMiddleware');
-const { validationResult, body } = require('express-validator');
+const bookingController = require('../controllers/bookingController');
+const { ensureAuthenticated, ensureRole } = require('../middleware/authMiddleware');
+const { Service } = require('../models/index');
 
-// GET route to display the booking form with a list of services
-router.get('/new', checkAuthenticated, async (req, res) => {
-    const services = await Service.findAll();
-    res.render('booking/new', { services });
-});
+// Route to handle the creation of a new booking
+// Only authenticated users with the 'customer' role can access this route
+//router.post('/create', ensureAuthenticated, ensureRole('customer'), bookingController.createBooking);
+router.post('/create', bookingController.createBooking);
 
-// POST route to create a new booking with input validation
-router.post('/', [
-    checkAuthenticated,
-    body('service_id').isInt(),
-    body('booking_time').isISO8601(),
-    body('duration').isInt({ min: 1 })
-], async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        // Handle errors, perhaps by re-rendering the form with error messages
-        req.flash('error_msg', 'Please correct the errors in the form');
-        return res.redirect('/bookings/new');
-    }
 
-    try {
-        const { service_id, user_id, booking_time, duration } = req.body;
-        await Booking.create({ service_id, user_id, booking_time, duration });
-        req.flash('success_msg', 'Booking created successfully');
-        res.redirect('/dashboard');
-    } catch (error) {
-        req.flash('error_msg', 'Error creating booking');
-        res.redirect('/bookings/new');
-    }
-});
+// Route to modify an existing booking
+// Only the customer who created the booking or an admin can modify the booking
+//router.put('/modify/:bookingId', ensureAuthenticated, bookingController.updateBooking);
+router.put('/modify/:bookingId', bookingController.updateBooking);
 
-// GET route to retrieve a user's bookings and display them
-router.get('/user/:userId', checkAuthenticated, async (req, res) => {
-    try {
-        const userId = req.params.userId;
-        const bookings = await Booking.findAll({
-            where: { user_id: userId },
-            include: [Service],
-        });
-        res.render('bookings/list', { bookings });
-    } catch (error) {
-        req.flash('error_msg', 'Error fetching bookings');
-        res.redirect('/dashboard');
-    }
-});
 
-// PUT route to update a booking with input validation
-router.put('/:bookingId', [
-    checkAuthenticated,
-    body('booking_time').isISO8601().withMessage('Invalid booking time'),
-    body('duration').isInt({ min: 1 }).withMessage('Invalid duration'),
-], async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ errors: errors.array() });
-    }
+// Route to delete an existing booking
+// Both the customer who created the booking and admins can delete the booking
+//router.delete('/delete/:bookingId', ensureAuthenticated, bookingController.deleteBooking);
+router.delete('/delete/:bookingId', bookingController.deleteBooking);
 
-    try {
-        const bookingId = req.params.bookingId;
-        const { booking_time, duration } = req.body;
-        await Booking.update({ booking_time, duration }, {
-            where: { id: bookingId }
-        });
-        res.json({ message: 'Booking updated successfully' });
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-});
 
-// DELETE route to delete a booking
-router.delete('/:bookingId', checkAuthenticated, async (req, res) => {
-    try {
-        const bookingId = req.params.bookingId;
-        await Booking.destroy({
-            where: { id: bookingId }
-        });
-        res.json({ message: 'Booking deleted successfully' });
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-});
+// Route to list all bookings for a customer
+// Accessible only by the customer to view their own bookings
+//router.get('/list/all', ...bookingController.listBookings);
 
-// GET route for editing a booking form
-router.get('/:bookingId/edit', checkAuthenticated, async (req, res) => {
-    try {
-        const booking = await Booking.findByPk(req.params.bookingId, {
-            include: [Service]
-        });
-        if (!booking) {
-            req.flash('error_msg', 'Booking not found');
-            return res.redirect('/dashboard');
-        }
 
-        res.render('bookings/edit', { booking });
-    } catch (error) {
-        console.error('Error getting booking for edit:', error);
-        req.flash('error_msg', 'Error loading edit form');
-        res.redirect('/dashboard');
-    }
-});
+//Business and Services route for booking appointments
 
-// DELETE route for canceling a booking
-router.delete('/:bookingId', checkAuthenticated, async (req, res) => {
-    try {
-        await Booking.destroy({
-            where: { id: req.params.bookingId }
-        });
-        req.flash('success_msg', 'Booking canceled successfully');
-        res.redirect('/dashboard');
-    } catch (error) {
-        console.error('Error canceling booking:', error);
-        req.flash('error_msg', 'Error canceling booking');
-        res.redirect('/dashboard');
-    }
-});
+
+
+
+
+// Route to list all bookings for a specific business
+// Only accessible by the business owner or an admin
+//router.get('/list/business/:businessId', ensureAuthenticated, ensureRole('owner', 'admin'), bookingController.listBookings);
+router.get('/list/business/:businessId', bookingController.listBookings);
+
+
+// Route for customers to view details of a specific booking
+// Customers can only view their own booking details
+//router.get('/details/:bookingId', ensureAuthenticated, ensureRole('customer'), bookingController.viewBookingDetails);
+router.get('/details/:bookingId', bookingController.viewBookingDetails);
+
+// In customerRoutes.js
+
+
+
 
 
 module.exports = router;

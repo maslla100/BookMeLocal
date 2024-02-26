@@ -1,6 +1,6 @@
-'use strict';
+/*'use strict';
 
-const createBookings = require('./createBookings');
+const createBookings = require('./bookingData');
 
 module.exports = {
     async up() {
@@ -11,3 +11,4 @@ module.exports = {
         // Logic to remove inserted bookings if necessary
     }
 };
+*/

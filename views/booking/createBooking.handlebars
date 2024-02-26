@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Booking</title>
+    <!-- Include any additional CSS or JS here, like a datepicker library -->
+</head>
+
+<body>
+    <h1>Create a New Booking</h1>
+
+    <form action="/path-to-create-booking-endpoint" method="post">
+        <!-- Dropdown for Business -->
+        <label for="businessSelect">Select Business:</label>
+        <select id="businessSelect" name="businessName" required>
+            {{#each businesses}}
+            <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
+        </select>
+
+        <!-- Dropdown for Service, initially empty -->
+        <label for="serviceSelect">Select Service:</label>
+        <select id="serviceSelect" name="serviceName" required>
+            <!-- Options will be populated based on selected business -->
+        </select>
+
+        <!-- Date and Time Picker -->
+        <label for="bookingTime">Booking Date and Time:</label>
+        <input type="datetime-local" id="bookingTime" name="booking_time" required>
+
+        <label for="duration">Duration (in minutes):</label>
+        <input type="number" id="duration" name="duration" required>
+
+        <!-- Submit Button -->
+        <button type="submit">Create Booking</button>
+    </form>
+
+    <script>     // JavaScript to handle dynamic loading of services based on selected business
+        <script src="/js/loadServices.js"></script>
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>List of Bookings</title>
+    <!-- Add any additional head content here (like CSS links) -->
+</head>
+
+<body>
+    <h1>List of Bookings</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Booking Time</th>
+                <th>Duration (minutes)</th>
+                <th>Business Name</th>
+                <th>Service Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each bookings}}
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.bookingTime}}</td>
+                <td>{{this.duration}}</td>
+                <td>{{this.Service.Business.name}}</td>
+                <td>{{this.Service.name}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <!-- Include any additional scripts or footer content here -->
+</body>
+
+</html>

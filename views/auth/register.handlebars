@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+    <!-- Include any additional CSS here -->
+</head>
+
+<body>
+    <h1>Register</h1>
+
+    <form action="/auth/register" method="post">
+        <!-- Email Field -->
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <!-- Password Field -->
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+
+    <p>Already have an account? <a href="/auth/login">Login here</a>.</p>
+
+    <!-- Include any additional scripts here -->
+</body>
+
+</html>

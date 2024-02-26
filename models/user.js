@@ -1,44 +1,59 @@
-'use strict';
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcryptjs');
+const bcryptjs = require('bcryptjs');
 
 module.exports = (sequelize) => {
     class User extends Model {
-        static associate(models) {
-            User.hasMany(models.Business, { foreignKey: 'owner_id' });
-            User.hasMany(models.Booking, { foreignKey: 'user_id' });
+        // Instance method to validate password
+        validPassword(password) {
+            return bcryptjs.compareSync(password, this.password);
         }
     }
+
     User.init({
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
             validate: {
-                isEmail: true, // This line ensures the email field is validated as an email address
-            },
+                isEmail: true
+            }
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
+        role: {
+            type: DataTypes.ENUM('admin', 'owner', 'customer'),
+            defaultValue: 'customer'
+        }
     }, {
-        hooks: {
-            beforeCreate: async (user) => {
-                if (user.password) {
-                    user.password = await bcrypt.hash(user.password, 8);
-                }
-            },
-            beforeUpdate: async (user) => {
-                if (user.changed('password')) { // Only hash the password if it was changed
-                    user.password = await bcrypt.hash(user.password, 8);
-                }
-            },
-        },
         sequelize,
         modelName: 'User',
+        tableName: 'Users',  // Explicitly specifying the table name
         timestamps: true,
-        paranoid: true, // Enables soft deletes, adding a `deletedAt` field
+        paranoid: true,
+        hooks: {
+            beforeCreate: async (user) => {
+                user.email = user.email.toLowerCase();
+                const salt = await bcryptjs.genSalt(8);
+                user.password = await bcryptjs.hash(user.password, salt);
+            },
+            beforeUpdate: async (user) => {
+                if (user.changed('email')) {
+                    user.email = user.email.toLowerCase();
+                }
+                if (user.changed('password')) {
+                    const salt = await bcryptjs.genSalt(8);
+                    user.password = await bcryptjs.hash(user.password, salt);
+                }
+            }
+        }
     });
+
     return User;
 };

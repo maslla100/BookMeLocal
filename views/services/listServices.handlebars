@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>List of Services</title>
+    <!-- Include any CSS files here -->
+</head>
+
+<body>
+    <h1>Services</h1>
+
+    {{#if services.length}}
+    <ul>
+        {{#each services}}
+        <li>
+            <h2>{{this.name}}</h2>
+            <p>Description: {{this.description}}</p>
+            <!-- Add other service details you want to display -->
+        </li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <p>No services found.</p>
+    {{/if}}
+</body>
+
+</html>

@@ -1,4 +1,3 @@
-
 -- Drop the database if it exists and create a new one
 DROP DATABASE IF EXISTS bookme_local;
 CREATE DATABASE bookme_local CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -9,9 +8,11 @@ CREATE TABLE Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
+    role ENUM('admin', 'owner', 'customer') NOT NULL DEFAULT 'customer',
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deletedAt DATETIME DEFAULT NULL 
+    
 );
 
 -- Create Businesses table
@@ -26,6 +27,8 @@ CREATE TABLE Businesses (
     deletedAt DATETIME DEFAULT NULL, 
     FOREIGN KEY (owner_id) REFERENCES Users(id) ON DELETE SET NULL
 );
+-- Add index on name field in Businesses table
+CREATE INDEX idx_businesses_name ON Businesses(name);
 
 -- Create Services table
 CREATE TABLE Services (
@@ -53,4 +56,5 @@ CREATE TABLE Bookings (
     FOREIGN KEY (service_id) REFERENCES Services(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE
 );
+
 
