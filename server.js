@@ -82,6 +82,7 @@ app.use((req, res, next) => {
 
 
 
-//server start
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+sessionStore.sync().then(() => {
+    app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+});
 
