@@ -3,6 +3,8 @@ const router = express.Router();
 const bookingController = require('../controllers/bookingController');
 const { ensureAuthenticated, ensureRole } = require('../middleware/authMiddleware');
 const { Service } = require('../models/index');
+const calendarController = require('../controllers/calendarController');
+
 
 // Route to handle the creation of a new booking
 // Only authenticated users with the 'customer' role can access this route
@@ -20,6 +22,14 @@ router.put('/modify/:bookingId', bookingController.updateBooking);
 // Both the customer who created the booking and admins can delete the booking
 //router.delete('/delete/:bookingId', ensureAuthenticated, bookingController.deleteBooking);
 router.delete('/delete/:bookingId', bookingController.deleteBooking);
+
+// In your routes file (could be calendarRoutes.js or another routes file)
+router.get('/booking/calendar', ensureAuthenticated, (req, res) => {
+    console.log("GET /booking/calendar route accessed on calendarRoutes ");
+
+    // This route should render the calendar page
+    res.render('booking/calendar');
+});
 
 
 // Route to list all bookings for a customer

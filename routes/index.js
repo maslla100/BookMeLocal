@@ -10,6 +10,7 @@ const bookingRoutes = require('./bookingRoutes');
 const businessRoutes = require('./businessRoutes');
 const ownerRoutes = require('./ownerRoutes');
 const serviceRoutes = require('./serviceRoutes');
+const calendarRoutes = require('./calendarRoutes')
 
 // Middleware for checking authentication and user roles
 //const { ensureAuthenticated, redirectIfAuthenticated, ensureRole } = require('../middleware/authMiddleware');
@@ -37,7 +38,7 @@ router.use('/booking', bookingRoutes);
 router.use('/business', businessRoutes);
 router.use('/owner', ownerRoutes);
 router.use('/service', serviceRoutes);
-//router.use('/', customerRoutes);
+router.use('/calendar', calendarRoutes);
 
 
 //Catch-all for 404 errors

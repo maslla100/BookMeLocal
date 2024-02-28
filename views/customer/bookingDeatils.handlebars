@@ -1,0 +1,13 @@
+{{#*inline "additionalScripts"}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.x/main.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            // Add other options and event sources here
+        });
+        calendar.render();
+    });
+</script>
+{{/inline}}

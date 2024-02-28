@@ -25,6 +25,17 @@ router.get('/profile', ...customerController.viewProfile);  //In use
 // Booking Management
 router.get('/bookings', ...bookingController.listBookings);  //In use - My Bookings link
 
+
+// In customerRoutes.js
+router.get('/calendar', ensureAuthenticated, (req, res) => {
+    console.log("Accessing the calendar page via /customer/calendar");
+    res.render('booking/calendar');
+});
+
+
+
+
+
 //Route to view services on customer Dashboard
 router.get('/services', ensureAuthenticated, ...servicesController.listServices);
 

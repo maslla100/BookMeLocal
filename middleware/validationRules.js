@@ -5,7 +5,7 @@ const noValidationRules = () => {
     return [];
 };
 
-/*
+
 const userValidationRules = () => {
     return [
         body('email').isEmail().withMessage('Invalid email format'),
@@ -89,18 +89,3 @@ module.exports = {
     // Add other exported rules as necessary
 };
 
-*/
-
-
-// Reassign all exported functions to noValidationRules
-module.exports = {
-    userValidationRules: noValidationRules,
-    editUserValidationRules: noValidationRules,
-    businessValidationRules: noValidationRules,
-    editBusinessValidationRules: noValidationRules,
-    serviceValidationRules: noValidationRules,
-    editServiceValidationRules: noValidationRules,
-    bookingValidationRules: noValidationRules,
-    editBookingValidationRules: noValidationRules
-    // Add other exported rules as necessary
-};

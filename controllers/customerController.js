@@ -37,7 +37,7 @@ const customerController = {
                 listBusinessLink: '/customer/listBusiness',
                 createBookingLink: '/customer/createbookings', // Same as list, used for POST
                 viewServiceLink: '/customer/services', // Replace :id dynamically
-                dashboardLink: '/customer/customerDashboard',
+                calendarLink: '/customer/calendar',
                 logoutLink: '/auth/logout',
                 // User info
                 loggedIn: req.isAuthenticated(),

@@ -58,7 +58,8 @@ app.use(passport.session());
 
 
 // Set up static folder
-app.use(express.static('/public'));
+// Correct setup
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Flash middleware
 app.use(flash());
