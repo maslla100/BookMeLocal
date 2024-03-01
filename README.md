@@ -14,7 +14,7 @@ BookMeLocal is a comprehensive booking management application designed to cater 
 - [Security](#security)
 - [Contributing](#contributing)
 - [License](#license)
-- [Image] (#Image)
+- [Image](#Image)
 - [Contact](#contact)
 
 ## Features
@@ -90,7 +90,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 ## Image
-![BookMeLocal][sample.png]
+![BookMeLocal][/BOOKMELOCAL/sample.png]
 
 
 ## Contact
