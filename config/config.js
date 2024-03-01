@@ -22,10 +22,12 @@ let developmentConfig = {
     }
 };
 
+let productionConfig = {}; // Initialize to an empty object to avoid reference errors
+
 // Check if JAWSDB_URL is available to use JawsDB on Heroku
 if (process.env.JAWSDB_URL) {
     const jawsDbConfig = parseDbUrl(process.env.JAWSDB_URL);
-    developmentConfig = {
+    productionConfig = {
         username: jawsDbConfig.user,
         password: jawsDbConfig.password,
         database: jawsDbConfig.database,
@@ -42,6 +44,7 @@ if (process.env.JAWSDB_URL) {
 }
 
 module.exports = {
-    development: developmentConfig
+    development: developmentConfig,
+    production: productionConfig
     // You can add more environments here, like test and production
 };
