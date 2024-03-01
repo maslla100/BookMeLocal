@@ -1,27 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of Services</title>
-    <!-- Include any CSS files here -->
+    <link rel="stylesheet" href="/css/services.css"> <!-- Link to your CSS file -->
 </head>
 
 <body>
-    <h1>Services</h1>
+    <div class="services-container">
+        <h1>Our Services</h1>
 
-    {{#if services.length}}
-    <ul>
+        {{#if services.length}}
         {{#each services}}
-        <li>
-            <h2>{{this.name}}</h2>
-            <p>Description: {{this.description}}</p>
-            <!-- Add other service details you want to display -->
-        </li>
+        {{#if @first}}
+        <section class="business-section">
+            <h2 class="business-name">{{this.Business.name}}</h2>
+            <ul class="services-list">
+                {{else}}
+                {{#unless (eq this.Business.name ../services.[@index-1].Business.name)}}
+            </ul>
+        </section>
+        <section class="business-section">
+            <h2 class="business-name">{{this.Business.name}}</h2>
+            <ul class="services-list">
+                {{/unless}}
+                {{/if}}
+                <li class="service-item">
+                    <h3>{{this.name}}</h3>
+                    <p>Description: {{this.description}}</p>
+                </li>
+                {{#if @last}}
+            </ul>
+        </section>
+        {{/if}}
         {{/each}}
-    </ul>
-    {{else}}
-    <p>No services found.</p>
-    {{/if}}
+        {{else}}
+        <p class="no-services">No services found.</p>
+        {{/if}}
+    </div>
 </body>
 
 </html>

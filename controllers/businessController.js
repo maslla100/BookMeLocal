@@ -25,6 +25,24 @@ const businessController = {
         }
     }],
 
+    // List all businesses - norole
+    listBusinesses_norole: async (req, res) => {
+        console.log("listBusinesses called");
+        try {
+            let businesses = await Business.findAll({
+                include: [{
+                    model: Service,
+                    attributes: ['id', 'name'] // Adjust attributes as needed
+                }]
+            });
+            businesses = businesses.map(business => business.get({ plain: true }));
+            res.json(businesses);
+        } catch (error) {
+            console.error("Error fetching businesses and services:", error);
+            res.status(500).json({ message: 'Failed to fetch businesses and services' });
+        }
+    },
+
 
 
     // View details of a specific business - Accessible to all authenticated users

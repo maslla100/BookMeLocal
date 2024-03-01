@@ -12,19 +12,23 @@ const customerController = {
     showDashboard: [ensureAuthenticated, ensureCustomer, async (req, res) => {
         try {
             const customerId = req.user.id;
-            // Retrieve customer's bookings and other necessary data
             let bookings = await db.Booking.findAll({
                 where: { userId: customerId },
-                include: [db.Service] // Include service details in the booking
+                include: [{
+                    model: db.Service,
+                    include: [db.Business]
+                }]
             });
 
-            // Convert Sequelize objects to plain JavaScript objects
+
+            // Convert Sequelize objects to plain JavaScript objects, handle bars issue!
             bookings = bookings.map(booking => booking.get({ plain: true }));
 
             const customer = await db.User.findByPk(customerId);
             console.log("Dashboard Data: ", { customer, bookings });
-            // Render customer dashboard view with bookings, customer info, and dynamic links
             console.log("Rendering customer dashboard");
+            console.log("Bookings Data: ", bookings);
+
             res.render('customer/customerDashboard', {
                 customer: customer,
                 bookings: bookings,
@@ -35,8 +39,7 @@ const customerController = {
                 profileLink: '/customer/profile',
                 bookingsListLink: '/customer/bookings',
                 listBusinessLink: '/customer/listBusiness',
-                createBookingLink: '/customer/createbookings', // Same as list, used for POST
-                viewServiceLink: '/customer/services', // Replace :id dynamically
+                viewServiceLink: '/customer/services',
                 calendarLink: '/customer/calendar',
                 logoutLink: '/auth/logout',
                 // User info
@@ -53,12 +56,6 @@ const customerController = {
     }],
 
 
-    /*showDashboard: (req, res) => {
-        console.log("showDashboard: Simplified version called");
-
-        // Render the simple view
-        res.render('customer/customerDashboard');
-    },*/
 
 
 

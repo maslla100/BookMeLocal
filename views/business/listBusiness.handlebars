@@ -1,27 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of Businesses</title>
-    <!-- Include any CSS files here -->
+    <link rel="stylesheet" href="/css/global.css"> <!-- Global styles -->
+    <link rel="stylesheet" href="/css/business-list.css"> <!-- Business list specific styles -->
 </head>
 
 <body>
-    <h1>Businesses</h1>
+    <div class="business-list-container">
+        <h1>Businesses</h1>
 
-    {{#if businesses.length}}
-    <ul>
-        {{#each businesses}}
-        <li>
-            <h2>{{this.name}}</h2>
-            <p>Description: {{this.description}}</p>
-            <!-- Add other business details you want to display -->
-        </li>
-        {{/each}}
-    </ul>
-    {{else}}
-    <p>No businesses found.</p>
-    {{/if}}
+        {{#if businesses.length}}
+        <div class="businesses">
+            {{#each businesses}}
+            <div class="business">
+                <h2>{{this.name}}</h2>
+                <p>Description: {{this.description}}</p>
+                <!-- Add other business details you want to display -->
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <p class="no-businesses">No businesses found.</p>
+        {{/if}}
+    </div>
 </body>
 
 </html>

@@ -1,32 +1,99 @@
+
+
 # BookMeLocal
-A website that allows users to book appointments with local businesses. The business, like a car mechanic, can tie their scheduler into this app, then users can select time slots. The user will then have a master calendar that has all of their appointments listed on it.
+
+BookMeLocal is a comprehensive booking management application designed to cater to customers, business owners, and administrators. It offers an intuitive platform for managing appointments, services, and business operations across various industries.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Role-Based Functionalities](#role-based-functionalities)
+- [Technologies Used](#technologies-used)
+- [Security](#security)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Features
+
+- **Customer Dashboard**: Customers can book, modify, or delete appointments with various businesses.
+- **Owner Dashboard**: Business owners can manage their services, bookings, and business details.
+- **Admin Dashboard**: Administrators can oversee the entire system, manage users, businesses, and bookings.
+- **Responsive Design**: Optimized for various devices and screen sizes.
+- **Interactive UI**: Dynamic content loading and real-time updates for a seamless user experience.
+
+## Installation
+
+To set up BookMeLocal on your local environment, follow these steps:
+
+1. **Clone the repository:**
+   git clone https://github.com/yourusername/BookMeLocal.git
+
+2. **Navigate to the project directory:**
+   cd BookMeLocal
+
+3. **Install dependencies:**
+   npm install
+
+4. **Set up environment variables:**
+   Create a `.env` file and configure your database and other settings.
+
+5. **Run Seeder to populate DB:**
+    Install MySQL 12
+    cd DB
+    mysql -u root -p < schema.sql  
+    Type you SQL password
+    exit SQL
+    cd ..
+    npx sequelize-cli db:seed:all  , if booking errors out.  
+    npx sequelize-cli db:seed --seed 07-create-Booking.js
+
+6. **Start the server:**
+   npm server.js
+
+## Usage
+
+After installation, access the application through `http://localhost:3000` in your browser. Log in as a customer, owner, or admin to explore the respective functionalities.
+
+## Role-Based Functionalities
+
+- **Customers** can view services, book appointments, and manage their profiles.
+- **Owners** can control their business listings, manage services, and oversee bookings.
+- **Admins** have full control over the application, including user and business management.
+
+## Technologies Used
+
+- **Node.js and Express.js**: For backend development.
+- **Handlebars.js**: Templating engine.
+- **MySQL and Sequelize ORM**: Database management.
+- **Passport.js**: User authentication.
+- **FullCalendar**: Application Calendar
+- **Heroku**: Deployment.
+
+## Security
+
+BookMeLocal prioritizes security with hashed passwords, session management, and environment variable protection for sensitive data.
+
+## Contributing
+
+Contributions to improve BookMeLocal are welcome. Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin new-feature`
+5. Submit a pull request.
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+Your Name - luis.llamas.it@gmail.com
+
+Project Link: [https://github.com/yourusername/BookMeLocal](https://github.com/yourusername/BookMeLocal)
 
 
-# BrainStorm Ideas
-- Login Page
-- Companies create an account and link their scheduler to this app. They then can login to see what appointments have been created. Future modifications would be to add the ability to push the appointments created in BookMeLocal to their local scheduler.
-- User create an account.
-  - They then search for "Car Mechanic" and get the results back
-  - They click on the company they want to use (future additions would be to add google reviews to the page)
-  - The companies calendar appears and they select a date and time to book an appointment.
-  - When you click on a time slot, a modal appears asking what services they provide, you select which one you want, confirm the information, and then the appointment is added to your master calendar and the companies.
-  - Personalize your profile with notification alerts, color schemes, time zones, link outside calendars, etc.
-- Future addition to add a finance section that tracks how much you spent, companies can add invoices for your records, potentially tax forms, etc.
-
-# To Do List
-- Create 3 ficticious companies; 1 car mechanic, 1 barbershop, 1 landscape company
-- Login Page
-  - User Profile
-  - User preferences for notification alerts, color schemes, time zones, link to outside calendars
-- Search Page
-  - Search for "mechanic" and the 1 ficticious car mechanic that we created appears
-  - Click on that mechanic and their March calendar appears with ficticious bookings that are already created appears
-  - You have to have the ability to select a time slot and create a booking
-- When selecting a company/time slot to create a booking:
-  - A modal appears with the necessary information to create the booking.
-    - Your information will already be preloaded from your account
-    - A drop down of the services that the company provides
-    - Once a servies is selected, the amount of time needed to perform the task is presented and the calendar booking is created for that amount of time.
-    - A text box that allows you to add notes to your booking
-- When the booking is completed then it is added to the companies main calendar
-### The above information in the To Do List is the minimum to turn in for Project 2

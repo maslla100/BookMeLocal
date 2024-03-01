@@ -12,15 +12,58 @@ const servicesController = {
     // List all services - Accessible to admins, owners and customers
     listServices: [ensureAuthenticated, async (req, res) => {
         try {
-            let services = await Service.findAll();
+            let services = await Service.findAll({
+                include: [{
+                    model: Business,
+                    attributes: ['name']
+                }],
+                order: [['business_id', 'ASC']]
+            });
+
             // Convert each Sequelize object to a plain JavaScript object
             services = services.map(service => service.get({ plain: true }));
-            console.log("Converted Services: ", services); // Debugging
+            console.log("Converted Services: ", services);
+
             res.render('services/listServices', { services });
         } catch (error) {
             handleError(new ErrorHandler(500, 'Failed to retrieve services'), res);
         }
     }],
+
+
+    // List all services no role
+    listServices_norole: [ensureAuthenticated, async (req, res) => {
+        const { businessId } = req.query; // Extract businessId from query parameters, if present
+
+        const queryOptions = {
+            include: [{
+                model: Business,
+                attributes: ['name']
+            }],
+            order: [['business_id', 'ASC']]
+        };
+
+        // If a businessId is provided, add a where clause to filter services by this ID
+        if (businessId && !isNaN(Number(businessId))) {
+            queryOptions.where = { business_id: businessId };
+        }
+
+        try {
+            let services = await Service.findAll(queryOptions);
+
+            // Convert each Sequelize object to a plain JavaScript object
+            services = services.map(service => service.get({ plain: true }));
+            console.log("Converted Services: ", services);
+
+            // Adjust the response based on the expected format by the AJAX calls
+            res.json(services); // Respond with JSON instead of rendering a view
+        } catch (error) {
+            console.error('Failed to retrieve services', error);
+            handleError(new ErrorHandler(500, 'Failed to retrieve services'), res);
+        }
+    }],
+
+
 
 
     // Create a new service - Accessible to admins and owners

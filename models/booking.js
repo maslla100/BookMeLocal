@@ -23,14 +23,7 @@ module.exports = (sequelize) => {
                     key: 'id'
                 }
             },
-            /*user_id: {
-                type: DataTypes.INTEGER,
-                allowNull: false,
-                references: {
-                    model: 'user',
-                    key: 'id'
-                }
-            },*/
+
             userId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -49,20 +42,7 @@ module.exports = (sequelize) => {
                 allowNull: false,
                 comment: 'Duration in minutes'
             },
-            /*createdAt: {
-                type: DataTypes.DATE,
-                defaultValue: DataTypes.NOW,
-                allowNull: false
-            },
-            updatedAt: {
-                type: DataTypes.DATE,
-                allowNull: false,
-                defaultValue: DataTypes.NOW
-            },
-            deletedAt: {
-                type: DataTypes.DATE,
-                defaultValue: null
-            }*/
+
             createdAt: {
                 type: DataTypes.DATE,
                 defaultValue: DataTypes.NOW,

@@ -1,0 +1,67 @@
+<div id='calendar'>
+</div>
+
+<div class="modal fade" id="AddEvent" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Add New Event</h5>
+            </div>
+            <form action="" method="post" id="SubmitEvent">
+                <!-- Hidden input for storing the event ID -->
+                <input type="hidden" id="eventId" name="eventId" value="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="business_name"><b>Business Name</b></label>
+                        <select id="business_name" name="business_name" class="form-control">
+                            <!-- Business options will be populated here -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="service_name"><b>Service Name</b></label>
+                        <select id="service_name" name="service_name" class="form-control">
+                            <!-- Service options will be populated here -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="event_name"><b>Event Name</b></label>
+                        <input type="text" name="event_name" id="event_name" class="form-control clear-form" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="start_date"><b>Start Date</b></label>
+                        <input type="date" name="start_date" id="start_date" class="form-control clear-form">
+                    </div>
+                    <div class="form-group">
+                        <label for="end_date"><b>End Date</b></label>
+                        <input type="date" name="end_date" id="end_date" class="form-control clear-form">
+                    </div>
+                    <div class="form-group">
+                        <label for="color"><b>Color</b></label>
+                        <input type="color" name="color" id="color" class="form-control clear-form">
+                    </div>
+                    <div class="form-group">
+                        <label for="link"><b>Url</b></label>
+                        <input type="url" name="link" id="link" class="form-control clear-form">
+                    </div>
+                    <!-- Start Time -->
+                    <div class="form-group">
+                        <label for="start_time"><b>Start Time</b></label>
+                        <input type="time" name="start_time" id="start_time" class="form-control" required>
+                    </div>
+
+                    <!-- End Time -->
+                    <div class="form-group">
+                        <label for="end_time"><b>End Time</b></label>
+                        <input type="time" name="end_time" id="end_time" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- Delete Button -->
+                    <button type="button" class="btn btn-danger" id="DeleteEvent" style="display: none;">Delete</button>
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

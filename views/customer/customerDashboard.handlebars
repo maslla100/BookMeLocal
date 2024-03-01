@@ -1,34 +1,50 @@
-<div class="dashboard-container">
-    <h1>Customer Dashboard</h1>
-    {{#if userName}}
-    <p>Welcome back, {{userName}}!</p>
-    {{/if}}
+<!DOCTYPE html>
+<html lang="en">
 
-    <nav class="customer-dashboard-nav">
-        <a href="{{profileLink}}">Profile</a>
-        <a href="{{listBusinessLink}}">Businesses</a>
-        <a href="{{bookingsListLink}}">My Bookings</a>
-        <a href="{{createBookingLink}}">Create Booking</a>
-        <a href="{{viewServiceLink}}">Services</a>
-        <a href="{{calendarLink}}">Calendar</a>
-        <a href="{{logoutLink}}">Logout</a>
-    </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="/css/global.css"> <!-- Global styles -->
+    <link rel="stylesheet" href="/css/dashboard.css"> <!-- Dashboard specific styles -->
+</head>
 
-    <div class="dashboard-content">
-        <!-- Content specific to the customer's dashboard -->
-        <h2>Your Bookings</h2>
-        {{#each bookings}}
-        <div class="booking">
-            <p>Booking ID: {{this.id}}</p>
-            <p>Business: {{this.Service.Business.name}}</p>
-            <p>Service: {{this.Service.name}}</p>
-            <p>Booking Time: {{this.bookingTime}}</p>
-            <p>Duration: {{this.bookingTime}}</p>
-            <!-- More booking details here -->
-        </div>
-        {{else}}
-        <p>No bookings found.</p>
-        {{/each}}
-        <!-- Other dashboard contents -->
+<body>
+    <div class="dashboard-wrapper">
+        <header class="dashboard-header">
+            <h1>Customer Dashboard</h1>
+            {{#if userName}}
+            <p>Welcome back, {{userName}}!</p>
+            {{/if}}
+        </header>
+
+        <nav class="dashboard-nav">
+            <a href="{{profileLink}}">Profile</a>
+            <a href="{{listBusinessLink}}">Businesses</a>
+            <a href="{{viewServiceLink}}">Services</a>
+            <a href="{{calendarLink}}">Calendar</a>
+            <a href="{{logoutLink}}">Logout</a>
+        </nav>
+
+        <main class="dashboard-main">
+            <section class="bookings-section">
+                <h2>Your Bookings</h2>
+                {{#each bookings}}
+                <article class="booking">
+                    <h3>{{this.Service.name}} at {{this.Service.Business.name}}</h3>
+                    <p>Booking ID: {{this.id}}</p>
+                    <p>Booking Time: {{formatDate this.booking_time "MMMM Do YYYY, h:mm:ss a"}}</p>
+                </article>
+                {{else}}
+                <p>No bookings found.</p>
+                {{/each}}
+            </section>
+        </main>
     </div>
-</div>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/dashboard.js"></script> <!-- Path to your JavaScript file -->
+</body>
+
+</html>

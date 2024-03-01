@@ -1,0 +1,51 @@
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.dashboard-header h1 {
+    color: #333;
+}
+
+.dashboard-nav {
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.dashboard-nav a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.dashboard-main {
+    width: 80%;
+    max-width: 1200px;
+}
+
+.bookings-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.booking {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.booking h3 {
+    margin-top: 0;
+}
+
+.booking p {
+    margin: 5px 0;
+}

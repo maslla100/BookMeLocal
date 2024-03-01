@@ -1,36 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <!-- Include any additional CSS here -->
+    <link rel="stylesheet" href="/css/register.css"> <!-- Link to your CSS file for register styles -->
 </head>
 
 <body>
-    <h1>Register</h1>
+    <div class="register-container">
+        <h1>Register</h1>
 
-    <form action="/auth/register" method="post">
-        <!-- Email Field -->
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
+        <form action="/auth/register" method="post" class="register-form">
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
 
-        <!-- Password Field -->
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
 
-        <!-- Submit Button -->
-        <div>
-            <button type="submit">Register</button>
-        </div>
-    </form>
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="btn register-btn">Register</button>
+            </div>
+        </form>
 
-    <p>Already have an account? <a href="/auth/login">Login here</a>.</p>
-
-    <!-- Include any additional scripts here -->
+        <p class="login-link">Already have an account? <a href="/auth/login">Login here</a>.</p>
+    </div>
 </body>
 
 </html>

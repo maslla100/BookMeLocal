@@ -5,7 +5,7 @@ module.exports = [
         serviceName: 'Oil Change',
         userEmail: 'luis@example.com',
         bookingDetails: {
-            booking_time: new Date('2023-03-04T07:30:00'),
+            booking_time: new Date('2024-03-04T07:30:00'),
             duration: 120,
         }
     },
@@ -14,7 +14,7 @@ module.exports = [
         serviceName: 'Tire Rotation',
         userEmail: 'alex@example.com',
         bookingDetails: {
-            booking_time: new Date('2023-03-13T14:00:00'),
+            booking_time: new Date('2024-03-13T14:00:00'),
             duration: 60,
         }
     },
@@ -23,7 +23,7 @@ module.exports = [
         serviceName: 'Flat Tire Repair',
         userEmail: 'edgar@example.com',
         bookingDetails: {
-            booking_time: new Date('2023-03-28T12:15:00'),
+            booking_time: new Date('2024-03-28T12:15:00'),
             duration: 30,
         }
     },
@@ -33,7 +33,7 @@ module.exports = [
         serviceName: 'Hair Cut',
         userEmail: 'caleb@example.com',
         bookingDetails: {
-            booking_time: new Date('2023-03-06T10:00:00'),
+            booking_time: new Date('2024-03-06T10:00:00'),
             duration: 30,
         }
     },
@@ -42,7 +42,7 @@ module.exports = [
         serviceName: 'Head Massage',
         userEmail: 'luis@example.com',
         bookingDetails: {
-            booking_time: new Date('2023-03-14T17:30:00'),
+            booking_time: new Date('2024-03-14T17:30:00'),
             duration: 45,
         }
     },
@@ -51,7 +51,7 @@ module.exports = [
         serviceName: 'Beard Trimming',
         userEmail: 'alex@example.com',
         bookingDetails: {
-            booking_time: new Date('2023-03-26T13:00:00'),
+            booking_time: new Date('2024-03-26T13:00:00'),
             duration: 60,
         }
     },
@@ -61,7 +61,7 @@ module.exports = [
         serviceName: 'Lawn Cutting',
         userEmail: 'edgar@example.com',
         bookingDetails: {
-            booking_time: new Date('2023-03-08T08:00:00'),
+            booking_time: new Date('2024-03-08T08:00:00'),
             duration: 600, // 10 hours
         }
     },
@@ -70,7 +70,7 @@ module.exports = [
         serviceName: 'Tree Trimming',
         userEmail: 'caleb@example.com',
         bookingDetails: {
-            booking_time: new Date('2023-03-19T09:00:00'),
+            booking_time: new Date('2024-03-19T09:00:00'),
             duration: 240, // 4 hours
         }
     },
@@ -79,7 +79,7 @@ module.exports = [
         serviceName: 'Leaf Removal',
         userEmail: 'luis@example.com',
         bookingDetails: {
-            booking_time: new Date('2023-03-12T08:30:00'),
+            booking_time: new Date('2024-03-12T08:30:00'),
             duration: 120, // 2 hours
         }
     },

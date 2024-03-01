@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const calendarController = require('../controllers/calendarController');
 const { ensureAuthenticated } = require('../middleware/authMiddleware');
+const { Booking } = require('../models/index');
+
 
 
 // Fetch events

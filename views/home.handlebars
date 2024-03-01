@@ -1,18 +1,34 @@
-<div class="home-container">
-    {{#if messages.error}}
-    <div class="alert alert-danger">{{messages.error}}</div>
-    {{/if}}
-    {{#if messages.success}}
-    <div class="alert alert-success">{{messages.success}}</div>
-    {{/if}}
-    {{#if messages.info}}
-    <div class="alert alert-info">{{messages.info}}</div>
-    {{/if}}
+<!DOCTYPE html>
+<html lang="en">
 
-    <h1>Welcome to BookMeLocal</h1>
-    <p>Your one-stop solution for booking local services.</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to BookMeLocal</title>
+    <link rel="stylesheet" href="/css/home.css"> <!-- Link to your CSS file -->
+</head>
 
-    {{!-- Links for user to log in or register --}}
-    <a href="/auth/login" class="btn">Login</a>
-    <a href="/auth/register" class="btn">Register</a>
-</div>
+<body>
+    <div class="home-container">
+        {{#if messages.error}}
+        <div class="alert alert-danger">{{messages.error}}</div>
+        {{/if}}
+        {{#if messages.success}}
+        <div class="alert alert-success">{{messages.success}}</div>
+        {{/if}}
+        {{#if messages.info}}
+        <div class="alert alert-info">{{messages.info}}</div>
+        {{/if}}
+
+        <h1>Welcome to BookMeLocal</h1>
+        <p>Your one-stop solution for booking local services.</p>
+
+        <!-- Links for user to log in or register -->
+        <div class="action-buttons">
+            <a href="/auth/login" class="btn login-btn">Login</a>
+            <a href="/auth/register" class="btn register-btn">Register</a>
+        </div>
+    </div>
+</body>
+
+</html>

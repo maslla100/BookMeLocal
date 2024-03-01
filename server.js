@@ -2,37 +2,40 @@ const express = require('express');
 const { engine } = require('express-handlebars');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const passport = require('passport'); // Only one import of passport
-require('./config/passport'); // Importing your Passport configuration
+const passport = require('passport');
+require('./config/passport');
 const flash = require('connect-flash');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const dotenv = require('dotenv');
 const path = require('path');
-
+const handlebarsHelpers = require('./public/js/handlebars-helper');
+const moment = require('moment');
 
 // Load environment variables
 dotenv.config();
-
-// Import models and database connection
-//const db = require('./models');
-const { sequelize } = require('./models');
 
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Set up Handlebars
-app.engine('handlebars', engine());
+// Set up Handlebars with helpers
+app.engine('handlebars', engine({
+    helpers: handlebarsHelpers
+}));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+// Import models and database connection
+const { sequelize } = require('./models');
 
 // Session Middleware setup with Sequelize Store
 const sessionStore = new SequelizeStore({ db: sequelize });
-console.log("Current Environment:", process.env.NODE_ENV);
 app.use(session({
     secret: process.env.SESSION_SECRET,
     store: sessionStore,
@@ -40,25 +43,11 @@ app.use(session({
     saveUninitialized: false,
 }));
 
-//persistant session logging - troubleshooting
-app.use((req, res, next) => {
-    console.log("Session data on subsequent request:", req.session);
-    next();
-});
-
-
-// Sync the session store
-sessionStore.sync();
-
-
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
 // Set up static folder
-// Correct setup
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Flash middleware
@@ -73,17 +62,13 @@ app.use((req, res, next) => {
 // Routes setup
 const routes = require('./routes/index');
 app.use(routes);
-console.log("Routes setup complete")
-
 
 // Error handling
 app.use((req, res, next) => {
     res.status(404).send("Sorry, page not found!");
 });
 
-
-
+// Sync the session store and start the server
 sessionStore.sync().then(() => {
     app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 });
-
