@@ -14,13 +14,12 @@ BookMeLocal is a comprehensive booking management application designed to cater 
 - [Security](#security)
 - [Contributing](#contributing)
 - [License](#license)
+- [Image] (#Image)
 - [Contact](#contact)
 
 ## Features
 
 - **Customer Dashboard**: Customers can book, modify, or delete appointments with various businesses.
-- **Owner Dashboard**: Business owners can manage their services, bookings, and business details.
-- **Admin Dashboard**: Administrators can oversee the entire system, manage users, businesses, and bookings.
 - **Responsive Design**: Optimized for various devices and screen sizes.
 - **Interactive UI**: Dynamic content loading and real-time updates for a seamless user experience.
 
@@ -29,7 +28,7 @@ BookMeLocal is a comprehensive booking management application designed to cater 
 To set up BookMeLocal on your local environment, follow these steps:
 
 1. **Clone the repository:**
-   git clone https://github.com/yourusername/BookMeLocal.git
+   git clone https://https://github.com/anplace/BookMeLocal/tree/llamas
 
 2. **Navigate to the project directory:**
    cd BookMeLocal
@@ -41,14 +40,14 @@ To set up BookMeLocal on your local environment, follow these steps:
    Create a `.env` file and configure your database and other settings.
 
 5. **Run Seeder to populate DB:**
-    Install MySQL 12
-    cd DB
-    mysql -u root -p < schema.sql  
-    Type you SQL password
-    exit SQL
-    cd ..
-    npx sequelize-cli db:seed:all  , if booking errors out.  
-    npx sequelize-cli db:seed --seed 07-create-Booking.js
+    -Install MySQL 12
+    -cd DB
+    -mysql -u root -p < schema.sql  
+    -Type you SQL password
+    -exit SQL
+    -cd ..
+    -npx sequelize-cli db:seed:all  , if booking errors out.  
+    -npx sequelize-cli db:seed --seed 07-create-Booking.js
 
 6. **Start the server:**
    npm server.js
@@ -60,8 +59,7 @@ After installation, access the application through `http://localhost:3000` in yo
 ## Role-Based Functionalities
 
 - **Customers** can view services, book appointments, and manage their profiles.
-- **Owners** can control their business listings, manage services, and oversee bookings.
-- **Admins** have full control over the application, including user and business management.
+
 
 ## Technologies Used
 
@@ -90,10 +88,15 @@ Contributions to improve BookMeLocal are welcome. Please follow these steps to c
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
+
+## Image
+[BookMeLocal][/bookmelocal/sample.png]
+
+
 ## Contact
 
 Your Name - luis.llamas.it@gmail.com
 
-Project Link: [https://github.com/yourusername/BookMeLocal](https://github.com/yourusername/BookMeLocal)
+Project Link: [https://github.com/anplace/BookMeLocal/tree/llamas](https://github.com/anplace/BookMeLocal/tree/llamas)
 
 
