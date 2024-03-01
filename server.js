@@ -39,12 +39,23 @@ const { sequelize } = require('./models');
 
 // Session Middleware setup with Sequelize Store
 const sessionStore = new SequelizeStore({ db: sequelize });
+/*app.use(session({
+    secret: process.env.SESSION_SECRET,
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false,
+}));*/
 app.use(session({
     secret: process.env.SESSION_SECRET,
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+        secure: process.env.NODE_ENV === 'production' // Use secure cookies in production
+    }
 }));
+
+
 
 // Passport middleware
 app.use(passport.initialize());
