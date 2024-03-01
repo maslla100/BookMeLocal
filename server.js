@@ -25,6 +25,7 @@ app.engine('handlebars', engine({
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
+
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -41,7 +42,11 @@ app.use(session({
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+        secure: process.env.NODE_ENV === 'production' // Use secure cookies in production
+    }
 }));
+
 
 // Passport middleware
 app.use(passport.initialize());
@@ -72,3 +77,15 @@ app.use((req, res, next) => {
 sessionStore.sync().then(() => {
     app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 });
+
+
+//Ensure DB is running
+sequelize.authenticate().then(() => {
+    console.log('Database connected successfully.');
+    sessionStore.sync().then(() => {
+        app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+    });
+}).catch(err => {
+    console.error('Unable to connect to the database:', err);
+});
+

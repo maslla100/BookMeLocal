@@ -54,7 +54,7 @@ To set up BookMeLocal on your local environment, follow these steps:
 
 ## Usage
 
-After installation, access the application through `http://localhost:3000` in your browser. Log in as a customer, owner, or admin to explore the respective functionalities.
+After installation, access the application through `http://localhost:3001` in your browser. Log in as a customer, owner, or admin to explore the respective functionalities.
 
 ## Role-Based Functionalities
 
