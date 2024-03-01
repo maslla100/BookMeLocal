@@ -1,17 +1,39 @@
 require('dotenv').config();
 const parseDbUrl = require("parse-database-url");
 
-let config;
+let developmentConfig = {
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: 'mysql',
+    port: 3306,
+    dialectOptions: {
+        ssl: process.env.DB_SSL ? {
+            require: true,
+            rejectUnauthorized: false
+        } : false
+    },
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
+};
+
+let productionConfig = {};
+
+// Check if JAWSDB_URL is available to use JawsDB on Heroku
 if (process.env.JAWSDB_URL) {
-    // Production configuration with JawsDB
     const jawsDbConfig = parseDbUrl(process.env.JAWSDB_URL);
-    config = {
+    productionConfig = {
         username: jawsDbConfig.user,
         password: jawsDbConfig.password,
         database: jawsDbConfig.database,
         host: jawsDbConfig.host,
+        dialect: 'mysql',
         port: jawsDbConfig.port,
-        dialect: 'mysql', // Explicitly setting the dialect
         dialectOptions: jawsDbConfig.ssl ? {
             ssl: {
                 require: true,
@@ -19,28 +41,10 @@ if (process.env.JAWSDB_URL) {
             }
         } : {}
     };
-} else {
-    // Local development configuration
-    config = {
-        username: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.DB_NAME,
-        host: process.env.DB_HOST,
-        port: 3306,
-        dialect: 'mysql', // Explicitly setting the dialect
-        dialectOptions: {
-            ssl: process.env.DB_SSL ? {
-                require: true,
-                rejectUnauthorized: false
-            } : false
-        },
-        pool: {
-            max: 5,
-            min: 0,
-            acquire: 30000,
-            idle: 10000
-        }
-    };
 }
 
-module.exports = config;
+module.exports = {
+    development: developmentConfig,
+    production: productionConfig
+    // You can add more environments here, like test and production
+};
