@@ -71,12 +71,6 @@ app.use((req, res, next) => {
     res.status(404).send("Sorry, page not found!");
 });
 
-// Sync the session store and start the server
-sessionStore.sync().then(() => {
-    app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
-});
-
-
 //Ensure DB is running
 sequelize.authenticate().then(() => {
     console.log('Database connected successfully.');
