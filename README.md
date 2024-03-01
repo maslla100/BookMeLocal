@@ -90,7 +90,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 ## Image
-![BookMeLocal](/BOOKMELOCAL/sample.png)
+![BookMeLocal](/sample.png)
 
 
 ## Contact
