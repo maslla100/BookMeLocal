@@ -1,24 +1,47 @@
 require('dotenv').config();
+const parseDbUrl = require("parse-database-url");
 
-module.exports = {
-    development: {
-        username: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.DB_NAME,
-        host: process.env.DB_HOST,
+let developmentConfig = {
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: 'mysql',
+    port: 3306,
+    dialectOptions: {
+        ssl: process.env.DB_SSL ? {
+            require: true,
+            rejectUnauthorized: false
+        } : false
+    },
+    pool: {
+        max: 5,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
+    }
+};
+
+// Check if JAWSDB_URL is available to use JawsDB on Heroku
+if (process.env.JAWSDB_URL) {
+    const jawsDbConfig = parseDbUrl(process.env.JAWSDB_URL);
+    developmentConfig = {
+        username: jawsDbConfig.user,
+        password: jawsDbConfig.password,
+        database: jawsDbConfig.database,
+        host: jawsDbConfig.host,
         dialect: 'mysql',
-        port: 3306,
-        dialectOptions: {
-            ssl: process.env.DB_SSL ? {
+        port: jawsDbConfig.port,
+        dialectOptions: jawsDbConfig.ssl ? {
+            ssl: {
                 require: true,
                 rejectUnauthorized: false
-            } : false
-        },
-        pool: {
-            max: 5,
-            min: 0,
-            acquire: 30000,
-            idle: 10000
-        }
-    }
+            }
+        } : {}
+    };
+}
+
+module.exports = {
+    development: developmentConfig
+    // You can add more environments here, like test and production
 };
