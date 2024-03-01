@@ -1,5 +1,5 @@
 require('dotenv').config();
-//const parseDbUrl = require("parse-database-url");
+const parseDbUrl = require("parse-database-url");
 
 let developmentConfig = {
     username: process.env.DB_USER,
