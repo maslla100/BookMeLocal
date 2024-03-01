@@ -26,6 +26,8 @@ app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
 
+
+
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -42,11 +44,7 @@ app.use(session({
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
-    cookie: {
-        secure: process.env.NODE_ENV === 'production' // Use secure cookies in production
-    }
 }));
-
 
 // Passport middleware
 app.use(passport.initialize());
@@ -88,4 +86,3 @@ sequelize.authenticate().then(() => {
 }).catch(err => {
     console.error('Unable to connect to the database:', err);
 });
-
