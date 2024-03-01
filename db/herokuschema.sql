@@ -1,7 +1,7 @@
 -- Drop the database if it exists and create a new one
-DROP DATABASE IF EXISTS z7tyvgse3ogpmo4f;
-CREATE DATABASE z7tyvgse3ogpmo4f CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE z7tyvgse3ogpmo4f;
+DROP DATABASE IF EXISTS atlr8chg8h2oq84t;
+CREATE DATABASE atlr8chg8h2oq84t CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE atlr8chg8h2oq84t;
 
 -- Create Users table
 CREATE TABLE Users (
