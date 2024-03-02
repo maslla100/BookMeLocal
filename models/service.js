@@ -51,7 +51,9 @@ module.exports = (sequelize) => {
             freezeTableName: true,
             underscored: true,
             modelName: 'Service',
-            tableName: 'services',  // Explicitly specifying the table name
+            //tableName: 'services',  // Explicitly specifying the table name
+            tableName: 'Services',  // Explicitly specifying the table name
+
 
         });
     return Service;
