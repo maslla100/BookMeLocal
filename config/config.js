@@ -1,7 +1,7 @@
 require('dotenv').config();
 const parseDbUrl = require("parse-database-url");
 
-let developmentConfig = {
+let productionConfig = {
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
@@ -22,7 +22,7 @@ let developmentConfig = {
     }
 };
 
-let productionConfig = {};
+let developmentConfig = {};
 
 // Check if JAWSDB_URL is available to use JawsDB on Heroku
 if (process.env.JAWSDB_URL) {
