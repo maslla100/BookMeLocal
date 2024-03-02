@@ -27,7 +27,7 @@ let developmentConfig = {};
 // Check if JAWSDB_URL is available to use JawsDB on Heroku
 if (process.env.JAWSDB_URL) {
     const jawsDbConfig = parseDbUrl(process.env.JAWSDB_URL);
-    productionConfig = {
+    developmentConfig = {
         username: jawsDbConfig.user,
         password: jawsDbConfig.password,
         database: jawsDbConfig.database,
