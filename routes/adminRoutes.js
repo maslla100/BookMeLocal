@@ -4,10 +4,10 @@ const bookingController = require('../controllers/bookingController');
 const adminController = require('../controllers/adminController');
 const businessController = require('../controllers/businessController');
 const servicesController = require('../controllers/servicesController');
-//const authMiddleware = require('../middleware/authMiddleware');
+const authMiddleware = require('../middleware/authMiddleware');
 
 // Middleware to check if the user is authenticated and an admin
-//router.use(authMiddleware.ensureAuthenticated, authMiddleware.ensureAdmin);
+router.use(authMiddleware.ensureAuthenticated, authMiddleware.ensureAdmin);
 
 //Route to show adminDashboard
 router.get('admin/adminDashboard', adminController.showDashboard);

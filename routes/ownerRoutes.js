@@ -6,7 +6,7 @@ const ownerController = require('../controllers/ownerController');
 const businessController = require('../controllers/businessController');
 const bookingController = require('../controllers/bookingController');
 const servicesController = require('../controllers/servicesController');
-//const { ensureAuthenticated, ensureOwner } = require('../middleware/authMiddleware');
+const { ensureAuthenticated, ensureOwner } = require('../middleware/authMiddleware');
 
 // Route to display owner dashboard
 router.get('owner/dashboard', ownerController.showDashboard);
@@ -36,13 +36,8 @@ router.post('/business/update', businessController.updateBusinessDetails);
 
 
 // Routes for viewing and managing bookings
-//router.get('/bookings', [ensureAuthenticated, ensureOwner], bookingController.listBookings);
-router.get('/bookings', bookingController.listBookings);
-
-//router.post('/bookings/update/:id', [ensureAuthenticated, ensureOwner], bookingController.updateBooking);
-router.post('/bookings/update/:id', bookingController.updateBooking);
-
-//router.post('/bookings/delete/:id', [ensureAuthenticated, ensureOwner], bookingController.deleteBooking);
-router.post('/bookings/delete/:id', bookingController.deleteBooking);
+router.get('/bookings', [ensureAuthenticated, ensureOwner], bookingController.listBookings);
+router.post('/bookings/update/:id', [ensureAuthenticated, ensureOwner], bookingController.updateBooking);
+router.post('/bookings/delete/:id', [ensureAuthenticated, ensureOwner], bookingController.deleteBooking);
 
 module.exports = router;

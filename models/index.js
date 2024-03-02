@@ -1,41 +1,42 @@
+
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
-const envConfig = require('../config/config.js')[env];
-const { database, username, password, ...sequelizeOptions } = envConfig;
-const sequelize = new Sequelize(database, username, password, sequelizeOptions);
+const config = require('../config/config')[env];
 
+let sequelize;
+if (config.use_env_variable) {
+    sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+    sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
+const db = {};
 
-// Importing models
-const User = require('./user')(sequelize);
-const Business = require('./business')(sequelize);
-const Service = require('./service')(sequelize);
-const Booking = require('./booking')(sequelize);
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+// Import models
+db.User = require('./user')(sequelize, Sequelize.DataTypes);
+db.Business = require('./business')(sequelize, Sequelize.DataTypes);
+db.Service = require('./service')(sequelize, Sequelize.DataTypes);
+db.Booking = require('./booking')(sequelize, Sequelize.DataTypes);
 
 // Defining associations
 // User and Booking: One-to-Many relationship
-User.hasMany(Booking, { foreignKey: 'user_id' });
-Booking.belongsTo(User, { foreignKey: 'user_id' });
+db.User.hasMany(db.Booking, { foreignKey: 'user_id' });
+db.Booking.belongsTo(db.User, { foreignKey: 'user_id' });
 
 // Business and Service: One-to-Many relationship
-Business.hasMany(Service, { foreignKey: 'business_id' });
-Service.belongsTo(Business, { foreignKey: 'business_id' });
+db.Business.hasMany(db.Service, { foreignKey: 'business_id' });
+db.Service.belongsTo(db.Business, { foreignKey: 'business_id' });
 
 // Business and User (for business owners): One-to-One relationship
-Business.belongsTo(User, { foreignKey: 'owner_id' });
-User.hasOne(Business, { foreignKey: 'owner_id' });
+db.Business.belongsTo(db.User, { foreignKey: 'owner_id' });
+db.User.hasOne(db.Business, { foreignKey: 'owner_id' });
 
 // Service and Booking: One-to-Many relationship
-Service.hasMany(Booking, { foreignKey: 'service_id' });
-Booking.belongsTo(Service, { foreignKey: 'service_id' });
+db.Service.hasMany(db.Booking, { foreignKey: 'service_id' });
+db.Booking.belongsTo(db.Service, { foreignKey: 'service_id' });
 
 // Exporting models and sequelize instance
-module.exports = {
-    sequelize,
-    Sequelize,
-    User,
-    Business,
-    Service,
-    Booking
-};
-
+module.exports = db;
